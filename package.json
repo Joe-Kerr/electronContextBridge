@@ -1,5 +1,5 @@
 {
-  "name": "@joe_kerr/electronContextBridge",
+  "name": "@joe_kerr/electron-context-bridge",
   "version": "0.0.1",
   "description": "Electron context bridge between Main World (renderer) and Preload Isolated World.",
   "main": "./src/index.js",
