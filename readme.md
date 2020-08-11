@@ -1,4 +1,4 @@
-# electronContextBridge - Electron plugin for an isolated preload script
+# Electron plugin for an isolated preload script
 
 Run code in Electron's Main World (renderer) that is isolated, as much as possible, from the Preload Isolated World. This is achieved by using a context bridge. An Electron [context bridge](https://www.electronjs.org/docs/api/context-bridge) is required for **security purposes**.
 
