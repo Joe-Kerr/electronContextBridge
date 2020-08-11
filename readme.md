@@ -8,7 +8,7 @@ The current version has some open points on the todo list. Interfaces may change
 # Install
 
 ```
-npm install @joe_kerr/electronContextBridge
+npm install @joe_kerr/electron-context-bridge
 ```
 
 
