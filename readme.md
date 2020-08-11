@@ -15,7 +15,7 @@ npm install @joe_kerr/electron-context-bridge
 # Usage
 
 ```javascript
-const {ContextBridgeMain} = require("@joe_kerr/electronContextBridge");
+const {ContextBridgeMain} = require("@joe_kerr/electron-context-bridge");
 const contextBridge = new ContextBridgeMain(BrowserWindow);
 ```
 
