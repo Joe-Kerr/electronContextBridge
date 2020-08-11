@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv='expires' content='0'>
+	<meta http-equiv='pragma' content='no-cache'>
+	
+ </head>
+ 
+<body>
+
+	<div>Unit test renderer.</div>
+	
+	<div id="response"></div>
+	
+	<div>
+		<button id="ping">Ping</button>
+	</div>
+	
+	<script>
+		document.getElementById("ping").addEventListener("click", async function() {
+			const result = await window.$electron.request("unitTest", "pong");
+			document.getElementById("response").textContent = result;
+		});
+		
+		window.$electron.on("broadcast", function(event) {
+			document.getElementById("response").textContent = event.detail;
+		});
+		
+	</script>
+</body> 
+</html>

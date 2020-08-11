@@ -1,0 +1,19 @@
+{
+  "name": "@joe_kerr/electronContextBridge",
+  "version": "0.0.1",
+  "description": "Electron context bridge between Main World (renderer) and Preload Isolated World.",
+  "main": "./src/index.js",
+  "author": {
+    "name": "Joe Kerr",
+    "url": "https://github.com/Joe-Kerr/"
+  },
+  "license": "MIT",
+  "repository": "github:Joe-Kerr/electronContextBridge",
+  "keywords": [
+    "electron",
+    "ipc",
+    "context bridge",
+    "preload",
+	"renderer"
+  ]
+}
