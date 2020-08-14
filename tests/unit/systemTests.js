@@ -15,7 +15,7 @@ before(async function() {
 
 	await app.start();
 
-	//await app.client.waitUntilWindowLoaded();
+	//await app.client.waitUntilWindowLoaded(); //produces error with contextIsolation=true
 });
 
 after(async function () {
@@ -47,6 +47,6 @@ test("Ping/pong from renderer to main to renderer", async function() {
 	await app.client.waitUntilTextExists("#response", "pong", 10000);
 	
 	assert.ok(true);
-	
-	//assert.strictEqual(await app.client.getWindowCount(), 1);
 });
+
+test("Exiting the system tests will throw an error. Bug in Spectron with contextIsolation=true", ()=>{});

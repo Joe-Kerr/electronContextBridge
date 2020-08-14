@@ -27,8 +27,6 @@ async function createWindow () {
 	await win.loadFile(join(__dirname, "./index.html"));
 	
 	contextBridge.broadcastMessage("broadcast", "broadCastFromMain");
-	
-	//win.webContents.send("broadcast", "broadCastFromMain");
 }
 
 app.whenReady().then(createWindow);
