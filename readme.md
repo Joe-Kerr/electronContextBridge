@@ -40,7 +40,7 @@ Two types of communication are implemented:
 
 ```javascript
 //Main: Setup message channel
-contextBridge.createIpcChannel("getPrinters", "schema-todo", async (filterList)=>{
+contextBridge.createIpcChannel("getPrinters", async (filterList)=>{
   const printers = browserWindow.webContents.getPrinters();	
   return filter(printers, filterList);
 });	
