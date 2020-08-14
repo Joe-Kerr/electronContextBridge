@@ -12,7 +12,7 @@ test("createIpcChannel() calls callback on request", async ()=>{
 	const name = "test";
 	const userCallback = new sinon.fake();
 	
-	localSample.createIpcChannel(name, null, userCallback);
+	localSample.createIpcChannel(name, userCallback);
 	
 	assert.equal(localSample.ipc.handle.callCount, 1);
 	

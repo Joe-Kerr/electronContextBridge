@@ -19,7 +19,7 @@ async function createWindow () {
 		}
 	});
 	
-	contextBridge.createIpcChannel("unitTest", "todo", async (data)=>{
+	contextBridge.createIpcChannel("unitTest", async (data)=>{
 		console.log(data)
 		return data;
 	});	

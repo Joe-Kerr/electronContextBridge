@@ -6,14 +6,8 @@ class ContextBridgeMain {
 		this.fileExists = require("fs").existsSync;
 	}
 	
-	validateParams(params, paramSchema) {
-		return "todo";
-	}
-	
-	createIpcChannel(name, paramSchema, callback) {				
+	createIpcChannel(name, callback) {				
 		this.ipc.handle(name, async (event, data)=>{ 			
-			this.validateParams(paramSchema, data);
-			
 			return await callback(data);
 		});
 	}
