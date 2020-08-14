@@ -72,6 +72,13 @@ contextBridge.broadcastMessage("broadcast-event", {data: "broadcast-message"});
 
 # Versions
 
+## 0.1.0
+- Chg: Code cleanup and refactoring
+
+**Breaking changes**
+
+- Chg: Removed todo code for parameter validation. Requirements too diverse, user responsibility
+
 ## 0.0.1
 - Public beta release.
 
