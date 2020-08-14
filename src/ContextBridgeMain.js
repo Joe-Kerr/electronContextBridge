@@ -21,7 +21,7 @@ class ContextBridgeMain {
 	getPreloadFilePath() {
 		const path = this.pathJoin(__dirname, "ContextBridgePreload.js");
 		if(!this.fileExists(path)) {
-			throw new Error("getPreloadFilePath() return an invalid path to ContextBridgePreload.js");
+			throw new Error("getPreloadFilePath() returned an invalid path to ContextBridgePreload.js");
 		}		
 		return path;
 	}	
