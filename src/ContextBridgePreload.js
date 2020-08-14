@@ -6,42 +6,23 @@ const IpcMessaging = {
 		return require("electron").ipcRenderer;
 	},
 	
-	_checkIsValidChannelName(channelName) {
+	_assertValidChannelName(channelName) {
 		const name = String(channelName);
 		
 		if(name.startsWith("ELECTRON_")) {
-			return false;
+			throw new Error("Illegal Electron channel name: must not start with 'ELECTRON_'");
 		}
-		
-		return true;
 	}, 
 	
 	request(command, data) {
-		if(IpcMessaging._checkIsValidChannelName(command) === false) {
-			return Promise.reject(new Error("Illegal Electron channel name: must not start with 'ELECTRON_'"));
-		}
+		IpcMessaging._assertValidChannelName(command);
 		
 		const ipc = IpcMessaging._getIpc();				
 		return ipc.invoke(command, data);
-
-		/*
-		//DIY:
-		_getNextId() {return IpcMessaging.id++;},			
-		
-		const uniqueChannelId = String(IpcMessaging._getNextId());
-		ipcRenderer.send(command, {id: uniqueChannelId, data});
-		return new Promise((resolve, reject)=>{
-			ipcRenderer.once(uniqueChannelId, (event, responseData)=>{
-				resolve(responseData);
-			});
-		});			
-		*/
 	},
 	
 	on(eventName, callback) {
-		if(IpcMessaging._checkIsValidChannelName(eventName) === false) {
-			return Promise.reject(new Error("Illegal Electron channel name: must not start with 'ELECTRON_'"));
-		}		
+		IpcMessaging._assertValidChannelName(eventName);
 		
 		const ipc = IpcMessaging._getIpc();	
 		ipc.on(eventName, (event, data)=>{
