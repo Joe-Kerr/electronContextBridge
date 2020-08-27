@@ -48,8 +48,8 @@ test("getPreloadFilePath() returns path to preload file", ()=>{
 	const path = sample.getPreloadFilePath();
 	const preload = require(path);
 	
-	assert.ok("request" in preload);
-	assert.ok("on" in preload);
+	assert.ok("request" in preload.IpcMessaging);
+	assert.ok("on" in preload.IpcMessaging);
 });
 
 test("getPreloadFilePath() throws if preload file does not exist", ()=>{

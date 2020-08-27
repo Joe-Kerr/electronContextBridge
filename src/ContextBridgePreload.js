@@ -1,11 +1,13 @@
 const {contextBridge} = require("electron");
 const windowKey = "$electron";
 
-const IpcMessaging = {
+const PrivateIpcMessaging = {
 	_getIpc() {
 		return require("electron").ipcRenderer;
-	},
-	
+	}	
+}
+
+const IpcMessaging = {	
 	_assertValidChannelName(channelName) {
 		const name = String(channelName);
 		
@@ -17,14 +19,14 @@ const IpcMessaging = {
 	request(command, data) {
 		IpcMessaging._assertValidChannelName(command);
 		
-		const ipc = IpcMessaging._getIpc();				
+		const ipc = PrivateIpcMessaging._getIpc();				
 		return ipc.invoke(command, data);
 	},
 	
 	on(eventName, callback) {
 		IpcMessaging._assertValidChannelName(eventName);
 		
-		const ipc = IpcMessaging._getIpc();	
+		const ipc = PrivateIpcMessaging._getIpc();	
 		ipc.on(eventName, (event, data)=>{
 			callback({detail: data, name: eventName});
 		});		
@@ -38,7 +40,7 @@ if(contextBridge && contextBridge.exposeInMainWorld) {
 
 //unit testing
 else if(module && module.exports) {
-	module.exports = IpcMessaging;
+	module.exports = {IpcMessaging, PrivateIpcMessaging};
 }
 
 else {

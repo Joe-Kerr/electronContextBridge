@@ -1,22 +1,24 @@
 const assert = require("assert");
 const sinon = require("sinon");
-const Sample = require("../../src/ContextBridgePreload.js");
+const ContextBridgePreload = require("../../src/ContextBridgePreload.js");
+const Sample = ContextBridgePreload.IpcMessaging;
+
 
 suite("ContextBridgePreload.js");
 
 const backups = {};
 
 beforeEach(()=>{
-	backups["_getIpc"] = Sample._getIpc;
+	backups["_getIpc"] = ContextBridgePreload.PrivateIpcMessaging._getIpc;
 });
 
 afterEach(()=>{
-	Sample._getIpc = backups["_getIpc"];
+	ContextBridgePreload.PrivateIpcMessaging._getIpc = backups["_getIpc"];
 });
 
 test("request() calls invoke with its parameters", ()=>{
 	const invoke = new sinon.fake();	
-	Sample._getIpc = ()=>({invoke});
+	ContextBridgePreload.PrivateIpcMessaging._getIpc = ()=>({invoke});
 	
 	Sample.request("command", "data");
 	
@@ -31,7 +33,7 @@ test("request() returns rejected promise for illegal command names", async ()=>{
 
 test("on() calls callback with event data", ()=>{
 	const on = new sinon.fake();	
-	Sample._getIpc = ()=>({on});	
+	ContextBridgePreload.PrivateIpcMessaging._getIpc = ()=>({on});	
 	
 	const userCallback = new sinon.fake();
 	
