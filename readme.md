@@ -72,6 +72,9 @@ contextBridge.broadcastMessage("broadcast-event", {data: "broadcast-message"});
 
 # Versions
 
+## 0.1.1
+- Fix: Removed full exposure of ipcRenderer in Preload
+
 ## 0.1.0
 - Chg: Code cleanup and refactoring
 

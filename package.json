@@ -1,6 +1,6 @@
 {
   "name": "@joe_kerr/electron-context-bridge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Electron context bridge between Main World (renderer) and Preload Isolated World.",
   "main": "./src/index.js",
   "author": {
